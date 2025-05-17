@@ -1,0 +1,148 @@
+@import "home_fish_baits.css";
+@import "query_tool.css";
+@import "add_form.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background: #c5f3ab;
+    font-family: Arial;
+}
+
+::-webkit-scrollbar {
+    width: 0.3em;
+    height: 0.3em;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.page {
+    min-height: 100%;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+}
+
+.header {
+    height: 60px;
+    background: #ffb700;
+    margin-left: 210px;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: 1px solid #4fb308;
+}
+
+.content {
+	padding: 40px 20px 20px 250px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.footer {
+    height: 60px;
+    margin-top: -60px;
+    box-sizing: border-box;
+    margin-left: 210px;
+
+    background: rgba(159, 157, 157, 0.43);
+    padding: 5px;
+    color: #3d3d3d;
+    font-size: 11px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+.footer p {
+    padding: 1px;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    width: 210px;
+    height: 100%;
+    background: #042331;
+    overflow-y: auto;
+}
+
+.sidebar header {
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    line-height: 60px;
+    background: #063146;
+    user-select: none;
+}
+
+.sidebar ul a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    color: white;
+    padding-left: 40px;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: 1px solid black;
+    transition: .4s;
+}
+
+.sidebar ul li:hover a {
+    padding-left: 50px;
+}
+
+.clear {clear: both;}
+
+h2.title {
+    margin-bottom: 20px;
+}
+
+ul.mainmenu li div.logo a {
+    padding: 0;
+    width: 120px;
+    margin-right: 10px;
+    font-family: Monotype Corsiva, Tahoma, Arial;
+    font-size: 40px;
+    color: black;
+}
+
+ul.mainmenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    overflow: hidden;
+}
+
+ul.mainmenu li {
+    float: left;
+    margin: 10px 25px 0 35px;
+}
+
+ul.mainmenu li.last {
+    float: right;
+    font-size: 30px;
+    color: #9d3126;
+}
+
+ul.mainmenu li a {
+    font-size: 30px;
+    color: #9d3126;
+    transition: .3s;
+}
+
+ul.mainmenu li a:hover {
+	color: #063146;
+}

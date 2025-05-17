@@ -1,0 +1,28 @@
+{% extends 'query_tool/base.html' %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                {% for h in headers %}
+                    <th>{{ h.name }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in spots %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row }}</td>
+                    <td>{{ row.slug }}</td>
+                    <td>{{ row.location }}</td>
+                    <td>{{ row.max_depth }}</td>
+                    <td>{{ row.spot_category }}</td>
+                    <td>{{ row.fish.all|join:", " }}</td>
+                    <td><a href="/delete?id={{row.id}}&table=spots">delete</a></td>
+                    <td><a href="/edit?id={{row.id}}&table=spots">edit</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

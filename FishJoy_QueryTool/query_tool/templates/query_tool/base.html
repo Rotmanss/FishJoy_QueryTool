@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link type="text/css" href="{% static 'query_tool/css/base.css' %}" rel="stylesheet" />
+</head>
+<body>
+<div class="sidebar">
+    <header>Select</header>
+    <ul>
+        {% for s in sidebar %}
+            <li><a href="{% url s.url_button %}">{{ s.button }}</a></li>
+        {% endfor %}
+
+        {% block sidebar %}
+        {% endblock %}
+    </ul>
+</div>
+
+<div class="wrapper">
+    <div class="page">
+        {% block mainmenu %}
+            <div class="header">
+                <ul class="mainmenu">
+                    <li><div class="logo"><a href="{% url 'home' %}">Fish Joy</a></div></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        {% endblock %}
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; Pevny Roman</p>
+        <p>Offer your spot, fish or bait, for the sake of convenience of other fishers!</p>
+        <p>For any questions or suggestions: romanromapev@gmail.com</p>
+    </div>
+</div>
+</body>
+</html>

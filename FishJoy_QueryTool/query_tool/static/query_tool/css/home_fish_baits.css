@@ -1,0 +1,45 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+tr:hover {background-color:#f5f5f5;}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.id-column {
+    width: 50px;
+}
+
+.name-column {
+    width: 200px;
+}
+
+.slug-column {
+    width: 150px;
+}
+
+.location-column {
+    width: 150px;
+}
+
+.max-depth-column {
+    width: 100px;
+}
+
+.spot-category-column {
+    width: 150px;
+}
+
+.fish-column {
+    width: 200px;
+}

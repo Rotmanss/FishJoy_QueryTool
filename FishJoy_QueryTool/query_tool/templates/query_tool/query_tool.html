@@ -1,0 +1,132 @@
+{% extends 'query_tool/query_tool_base.html' %}
+{% block res_table %}
+    {% if q_spots_depth_gt %}
+        {% for row in q_spots_depth_gt %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row }}</td>
+                <td>{{ row.slug }}</td>
+                <td>{{ row.location }}</td>
+                <td>{{ row.max_depth }}</td>
+                <td>{{ row.spot_category }}</td>
+                <td>{{ row.fish.all|join:", " }}</td>
+            </tr>
+        {% endfor %}
+    {% elif q_spots_depth_lt %}
+       {% for row in q_spots_depth_lt %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row }}</td>
+                <td>{{ row.slug }}</td>
+                <td>{{ row.location }}</td>
+                <td>{{ row.max_depth }}</td>
+                <td>{{ row.spot_category }}</td>
+                <td>{{ row.fish.all|join:", " }}</td>
+            </tr>
+        {% endfor %}
+    {% elif q_spots_cat_gt %}
+       {% for row in q_spots_cat_gt %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row }}</td>
+                <td>{{ row.slug }}</td>
+                <td>{{ row.location }}</td>
+                <td>{{ row.max_depth }}</td>
+                <td>{{ row.spot_category }}</td>
+                <td>{{ row.fish.all|join:", " }}</td>
+            </tr>
+    {% endfor %}
+    {% elif q_spots_fish %}
+       {% for row in q_spots_fish %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row }}</td>
+                <td>{{ row.slug }}</td>
+                <td>{{ row.location }}</td>
+                <td>{{ row.max_depth }}</td>
+                <td>{{ row.spot_category }}</td>
+                <td>{{ row.fish.all|join:", " }}</td>
+            </tr>
+    {% endfor %}
+    {% elif q_fish_spots %}
+       {% for row in q_fish_spots %}
+            <tr>
+                <td>{{ row.spots_set.all|join:", "}}</td>
+                <td>{{ row.id }}</td>
+                <td>{{ row }}</td>
+                <td>{{ row.slug }}</td>
+                <td>{{ row.average_weight }}</td>
+                <td>{{ row.fish_category }}</td>
+                <td>{{ row.baits.all|join:", " }}</td>
+            </tr>
+    {% endfor %}
+    {% elif q_baits_fish_price %}
+       {% for row in q_baits_fish_price %}
+            <tr>
+                <td>{{ row.fish_set.all|join:", "}}</td>
+                <td>{{ row.id }}</td>
+                <td>{{ row }}</td>
+                <td>{{ row.slug }}</td>
+                <td>{{ row.price }}</td>
+            </tr>
+    {% endfor %}
+    {% elif q_fish_same_cat %}
+       {% for row in q_fish_same_cat %}
+            <tr>
+                <td>{{ row.spots_set.all|join:", "}}</td>
+                <td>{{ row.id }}</td>
+                <td>{{ row }}</td>
+                <td>{{ row.slug }}</td>
+                <td>{{ row.average_weight }}</td>
+                <td>{{ row.fish_category }}</td>
+                <td>{{ row.baits.all|join:", " }}</td>
+            </tr>
+    {% endfor %}
+    {% elif q_fish_on_all_spots %}
+       {% for row in q_fish_on_all_spots %}
+            <tr>
+                <td>{{ row.spots_set.all|join:", "}}</td>
+                <td>{{ row.id }}</td>
+                <td>{{ row }}</td>
+                <td>{{ row.slug }}</td>
+                <td>{{ row.average_weight }}</td>
+                <td>{{ row.fish_category }}</td>
+                <td>{{ row.baits.all|join:", " }}</td>
+            </tr>
+    {% endfor %}
+    {% elif q_fish_name_cat_cat_value_gt %}
+       {% for row in q_fish_name_cat_cat_value_gt %}
+            <tr>
+                <td>{{ row.spots_set.all|join:", "}}</td>
+                <td>{{ row.id }}</td>
+                <td>{{ row }}</td>
+                <td>{{ row.slug }}</td>
+                <td>{{ row.average_weight }}</td>
+                <td>{{ row.fish_category }}</td>
+                <td>{{ row.baits.all|join:", " }}</td>
+            </tr>
+    {% endfor %}
+    {% elif fish_fish_cat %}
+       {% for row in fish_fish_cat %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row }}</td>
+                <td>{{ row.slug }}</td>
+                <td>{{ row.location }}</td>
+                <td>{{ row.max_depth }}</td>
+                <td>{{ row.spot_category }}</td>
+                <td>{{ row.fish.all|join:", " }}</td>
+            </tr>
+    {% endfor %}
+    {% elif q_baits_on_all_spots %}
+       {% for row in q_baits_on_all_spots %}
+            <tr>
+                <td>{{ row.fish_set.all|join:", "}}</td>
+                <td>{{ row.id }}</td>
+                <td>{{ row }}</td>
+                <td>{{ row.slug }}</td>
+                <td>{{ row.price }}</td>
+            </tr>
+    {% endfor %}
+    {% endif %}
+{% endblock %}

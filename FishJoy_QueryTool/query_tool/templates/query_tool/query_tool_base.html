@@ -1,0 +1,141 @@
+{% extends 'query_tool/base.html' %}
+
+{% block content %}
+<div class="fish-form-wrapper">
+    <h2>Add record</h2>
+    <form method="post" action="{% url 'add' %}">
+      {% csrf_token %}
+      <input type="text" placeholder="table" aria-label="table" name="table">
+      <button type="submit">Add</button>
+    </form>
+</div>
+<div class="fish-form-wrapper">
+    <h2>Select spots where max depth is greater than value:</h2>
+    <form method="post" action="{% url 'query_tool' %}">
+      {% csrf_token %}
+      <input type="number" step="any" min="0.1" placeholder="value" aria-label="value" name="value_gt">
+      <input name="table_name" type="hidden" value="spots">
+      <button type="submit">Search</button>
+    </form>
+</div>
+<div class="fish-form-wrapper">
+    <h2>Select spots where max depth is lower than value:</h2>
+    <form method="post" action="{% url 'query_tool' %}">
+      {% csrf_token %}
+      <input type="number" step="any" min="0.1" placeholder="value" aria-label="value" name="value_lt">
+      <input name="table_name" type="hidden" value="spots">
+      <button type="submit">Search</button>
+    </form>
+</div>
+<div class="fish-form-wrapper">
+    <h2>Select spots that belong to category and their max depth is greater than value:</h2>
+    <form method="post" action="{% url 'query_tool' %}">
+      {% csrf_token %}
+      <input type="text" placeholder="category" aria-label="category" name="spots_category_slug" title="bay, canal, lake, ocean, pond, river, sea, stream, swamp, wetland ">
+      <input type="number" step="any" min="0.1" placeholder="value" aria-label="value" name="spots_category_slug_value">
+      <input name="table_name" type="hidden" value="spots">
+      <button type="submit">Search</button>
+    </form>
+</div>
+<div class="fish-form-wrapper">
+    <h2>Select names of locations where live fish with name:</h2>
+    <form method="post" action="{% url 'query_tool' %}">
+      {% csrf_token %}
+      <input type="text" placeholder="name" aria-label="name" name="spots_fish">
+      <input name="table_name" type="hidden" value="spots">
+      <button type="submit">Search</button>
+    </form>
+</div>
+<div class="fish-form-wrapper">
+    <h2>Select fish that dwell on locations with this name:</h2>
+    <form method="post" action="{% url 'query_tool' %}">
+      {% csrf_token %}
+      <input type="text" placeholder="name" aria-label="name" name="fish_spots">
+      <input name="table_name" type="hidden" value="fish">
+      <button type="submit">Search</button>
+    </form>
+</div>
+<div class="fish-form-wrapper">
+    <h2>Select baits which is good for fish with name and cost less then value:</h2>
+    <form method="post" action="{% url 'query_tool' %}">
+      {% csrf_token %}
+      <input type="text" placeholder="name" aria-label="name" name="baits_fish_name">
+      <input type="number" step="any" min="0.1" placeholder="value" aria-label="value" name="baits_price">
+      <input name="table_name" type="hidden" value="baits">
+      <button type="submit">Search</button>
+    </form>
+</div>
+
+<div class="fish-form-wrapper">
+    <h2>Select all fish that belong to the same category of fish with name:</h2>
+    <form method="post" action="{% url 'query_tool' %}">
+      {% csrf_token %}
+      <input type="text" placeholder="name" aria-label="name" name="fish_same_cat">
+      <input name="table_name" type="hidden" value="fish">
+      <button type="submit">Search</button>
+    </form>
+</div>
+<div class="fish-form-wrapper">
+    <h2>Select all fish that dwell on all locations:</h2>
+    <form method="post" action="{% url 'query_tool' %}">
+      {% csrf_token %}
+      <input name="fish_on_all_spots" type="hidden" value="fish_on_all_spots">
+      <input name="table_name" type="hidden" value="fish">
+      <button type="submit">Search</button>
+    </form>
+</div>
+<div class="fish-form-wrapper">
+    <h2>Select fish that have bait with name, in fish category and that possible to find in spots category where depth is greater than value:</h2>
+    <form method="post" action="{% url 'query_tool' %}">
+      {% csrf_token %}
+      <input type="text" placeholder="bait name" aria-label="bait name" name="fish_bait_name">
+      <input type="text" placeholder="fish category" aria-label="fish category" name="fish_fish_category">
+      <input type="text" placeholder="spots category" aria-label="spots category" name="fish_spots_category">
+      <input type="number" step="any" min="0.1" placeholder="value" aria-label="value" name="fish_value_depth_gt">
+      <input name="table_name" type="hidden" value="fish">
+      <button type="submit">Search</button>
+    </form>
+</div>
+<div class="fish-form-wrapper">
+    <h2>Select all points of fishing spots where you can catch all types of fish from the fish category:</h2>
+    <form method="post" action="{% url 'query_tool' %}">
+      {% csrf_token %}
+      <input type="text" placeholder="category" aria-label="category" name="fish_fish_cat">
+      <input name="table_name" type="hidden" value="fish">
+      <button type="submit">Search</button>
+    </form>
+</div>
+<div class="fish-form-wrapper">
+    <h2>Select all baits that are suitable for all fish:</h2>
+    <form method="post" action="{% url 'query_tool' %}">
+      {% csrf_token %}
+      <input type="hidden" name="baits_on_all_spots" value="baits_on_all_spots">
+      <input name="table_name" type="hidden" value="baits">
+      <button type="submit">Search</button>
+    </form>
+</div>
+
+    <table>
+        <thead>
+            <tr>
+                {% if spots_header %}
+                    {% for h in spots_header %}
+                        <th>{{ h.name }}</th>
+                    {% endfor %}
+                {% elif fish_header %}
+                    {% for h in fish_header %}
+                        <th>{{ h.name }}</th>
+                    {% endfor %}
+                {% elif baits_header %}
+                    {% for h in baits_header %}
+                        <th>{{ h.name }}</th>
+                    {% endfor %}
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% block res_table %}
+            {% endblock %}
+        </tbody>
+    </table>
+{% endblock %}

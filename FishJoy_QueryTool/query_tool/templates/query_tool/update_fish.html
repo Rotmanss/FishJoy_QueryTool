@@ -1,0 +1,28 @@
+{% extends 'query_tool/base.html' %}
+
+{% block content %}
+    <form method="post" action="{% url 'edit_record' row.id %}" class="add">
+        {% csrf_token %}
+        Name:<br>
+        <input name="name" type="text" value="{{ row.name }}" class="form-label">
+        Slug:<br>
+        <input name="slug" type="text" value="{{ row.slug }}" class="form-label">
+        average_weight:<br>
+        <input name="average_weight" type="number" step="any" min="0.1" value="{{ row.average_weight }}" class="form-label">
+        Baits (now contains: {{ row.baits.all|join:", " }}):<br>
+        <select name="baits" multiple class="form-label">
+            {% for bait in fish_or_baits %}
+                <option value="{{ bait.name }}">{{ bait.name }}</option>
+            {% endfor %}
+        </select>
+        fish_category (now is {{ row.fish_category }}):<br>
+        <select name="fish_category" class="form-label">
+            {% for cat in categories %}
+                <option value="{{ cat.name }}">{{ cat.name }}</option>
+            {% endfor %}
+        </select>
+
+        <input name="table_name" type="hidden" value="fish">
+        <button type="submit" class="form-button">Update</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'query_tool/base.html' %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                {% for h in headers %}
+                    <th>{{ h.name }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in fish %}
+                <tr>
+                    <td>{{ row.spots_set.all|join:", "}}</td>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row }}</td>
+                    <td>{{ row.slug }}</td>
+                    <td>{{ row.average_weight }}</td>
+                    <td>{{ row.fish_category }}</td>
+                    <td>{{ row.baits.all|join:", " }}</td>
+                    <td><a href="/delete?id={{row.id}}&table=fish">delete</a></td>
+                    <td><a href="/edit?id={{row.id}}&table=fish">edit</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

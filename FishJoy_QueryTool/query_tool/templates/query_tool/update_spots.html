@@ -1,0 +1,30 @@
+{% extends 'query_tool/base.html' %}
+
+{% block content %}
+    <form method="post" action="{% url 'edit_record' row.id %}" class="add">
+        {% csrf_token %}
+        Title:<br>
+        <input name="title" type="text" value="{{ row.title }}" class="form-label">
+        Slug:<br>
+        <input name="slug" type="text" value="{{ row.slug }}" class="form-label">
+        Location:<br>
+        <input name="location" type="text" value="{{ row.location }}" class="form-label">
+        max_depth:<br>
+        <input name="max_depth" type="number" step="any" min="0.1" value="{{ row.max_depth }}" class="form-label">
+        Fish (now contains: {{ row.fish.all|join:", " }}):<br>
+        <select name="fish" multiple class="form-label">
+            {% for fish in fish_or_baits %}
+                <option value="{{ fish.name }}">{{ fish.name }}</option>
+            {% endfor %}
+        </select>
+        spot_category (now is {{ row.spot_category }}):<br>
+        <select name="spot_category" class="form-label">
+            {% for cat in categories %}
+                <option value="{{ cat.name }}">{{ cat.name }}</option>
+            {% endfor %}
+        </select>
+
+        <input name="table_name" type="hidden" value="spots">
+        <button type="submit" class="form-button">Update</button>
+    </form>
+{% endblock %}
